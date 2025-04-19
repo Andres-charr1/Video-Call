@@ -1,0 +1,32 @@
+<ion-content class="login-container">
+  <div class="form-card">
+    <h2>Iniciar Sesión</h2>
+
+    <ion-input
+      placeholder="Correo"
+      [(ngModel)]="email"
+      type="email"
+      label="Correo"
+      labelPlacement="floating"
+    ></ion-input>
+
+    <ion-input
+      placeholder="Contraseña"
+      [(ngModel)]="password"
+      type="password"
+      label="Contraseña"
+      labelPlacement="floating"
+    ></ion-input>
+
+    <ion-button expand="block" (click)="login()">Iniciar Sesión</ion-button>
+    <ion-button expand="block" color="danger" (click)="signInGoogle()">
+      Iniciar sesión con Google
+    </ion-button>
+    
+
+    <div class="register-link">
+      <ion-text>¿No tienes una cuenta?</ion-text>
+      <ion-button fill="clear" size="small" (click)="goToRegister()">Registrarme</ion-button>
+    </div>
+  </div>
+</ion-content>

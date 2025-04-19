@@ -1,0 +1,43 @@
+ion-content {
+  --background: #f4f5f8;
+
+  ion-list {
+    ion-item {
+      --background: #fff;
+      border-radius: 12px;
+      margin: 8px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+      ion-label h2 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #222;
+      }
+
+      ion-label p {
+        margin: 0;
+        color: #666;
+        font-size: 0.9rem;
+      }
+    }
+
+    ion-item-sliding {
+      border-radius: 12px;
+      overflow: hidden;
+    }
+  }
+
+  ion-text {
+    display: block;
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1rem;
+    color: #888;
+  }
+}
+
+ion-fab-button {
+  --background: #3880ff;
+  --color: #fff;
+  box-shadow: 0 4px 10px rgba(56, 128, 255, 0.4);
+}

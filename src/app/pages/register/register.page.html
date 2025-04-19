@@ -1,0 +1,46 @@
+<ion-content class="register-container">
+  <div class="form-card">
+    <h2>Registro</h2>
+
+    <ion-input
+      placeholder="Nombre"
+      [(ngModel)]="user.nombre"
+      label="Nombre"
+      labelPlacement="floating"
+    ></ion-input>
+
+    <ion-input
+      placeholder="Apellido"
+      [(ngModel)]="user.apellido"
+      label="Apellido"
+      labelPlacement="floating"
+    ></ion-input>
+
+    <ion-input
+      placeholder="Correo"
+      [(ngModel)]="user.email"
+      type="email"
+      label="Correo"
+      labelPlacement="floating"
+    ></ion-input>
+
+    <ion-input
+      placeholder="Teléfono"
+      [(ngModel)]="user.telefono"
+      type="tel"
+      label="Teléfono"
+      labelPlacement="floating"
+    ></ion-input>
+
+    <ion-input
+      placeholder="Contraseña"
+      [(ngModel)]="user.password"
+      type="password"
+      label="Contraseña"
+      labelPlacement="floating"
+    ></ion-input>
+
+    <ion-button expand="block" (click)="register()">Registrarse</ion-button>
+    <ion-button fill="clear" size="small" (click)="goToLogin()">¿Ya tienes cuenta? Inicia sesión</ion-button>
+  </div>
+</ion-content>
