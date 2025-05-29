@@ -1,0 +1,66 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Iniciar Sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="login-container">
+
+    <div class="header-section">
+      <ion-icon name="person-circle-outline" size="large"></ion-icon>
+      <h1>Bienvenido</h1>
+      <p>Inicia sesión para continuar</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+      <ion-item class="form-item">
+        <ion-label position="stacked">Correo Electrónico</ion-label>
+        <ion-input
+          type="email"
+          formControlName="email"
+          placeholder="ejemplo@correo.com">
+        </ion-input>
+      </ion-item>
+      <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid" class="error-text">
+        <small *ngIf="loginForm.get('email')?.errors?.['required']">El correo es requerido</small>
+        <small *ngIf="loginForm.get('email')?.errors?.['email']">Ingresa un correo válido</small>
+      </div>
+
+      <ion-item class="form-item">
+        <ion-label position="stacked">Contraseña</ion-label>
+        <ion-input
+          type="password"
+          formControlName="password"
+          placeholder="Mínimo 6 caracteres">
+        </ion-input>
+      </ion-item>
+      <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid" class="error-text">
+        <small *ngIf="loginForm.get('password')?.errors?.['required']">La contraseña es requerida</small>
+        <small *ngIf="loginForm.get('password')?.errors?.['minlength']">Debe tener al menos 6 caracteres</small>
+      </div>
+
+      <ion-button
+        expand="block"
+        type="submit"
+        [disabled]="loginForm.invalid || isLoading"
+        class="login-button">
+        <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
+        <span *ngIf="!isLoading">Iniciar Sesión</span>
+      </ion-button>
+
+    </form>
+
+    <div class="register-link">
+      <p>¿No tienes cuenta?</p>
+      <ion-button
+        fill="clear"
+        (click)="goToRegister()"
+        [disabled]="isLoading">
+        Registrarse
+      </ion-button>
+    </div>
+
+  </div>
+</ion-content>

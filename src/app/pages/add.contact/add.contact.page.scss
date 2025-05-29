@@ -1,0 +1,575 @@
+// Variables de colores (consistentes con tu paleta existente)
+:host {
+  --primary-color: #4DA8B0;
+  --primary-light: #7BC4CB;
+  --primary-dark: #2D8A93;
+  --secondary-color: #00B27A;
+  --secondary-light: #4DCB9D;
+  --secondary-dark: #008A5E;
+  --tertiary-color: #26A69A;
+  --tertiary-light: #4DB6AC;
+  --tertiary-dark: #00695C;
+  --surface: #FFFFFF;
+  --surface-variant: #F8FAFC;
+  --on-surface: #1D1B20;
+  --on-surface-variant: #49454F;
+  --error: #BA1A1A;
+  --success: #00B27A;
+  --medium: #64748B;
+  
+  --form-bg: linear-gradient(135deg, #E0F2F1 0%, #E8F5E8 30%, #F0F9FF 70%, #E0F7FA 100%);
+  --card-shadow: 0 8px 32px rgba(77, 168, 176, 0.12);
+  --form-shadow: 0 12px 40px rgba(77, 168, 176, 0.15);
+  --accent-gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  --glass-bg: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(255, 255, 255, 0.6);
+}
+
+// Header moderno
+.modern-header {
+  ion-toolbar {
+    --background: linear-gradient(135deg, #4DA8B0 0%, #00B27A 100%);
+    --color: white;
+    --border-width: 0;
+    --min-height: 80px;
+    --padding-top: 8px;
+    --padding-bottom: 8px;
+    position: relative;
+    overflow: hidden;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -20%;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -50%;
+      right: -20%;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    
+    ion-back-button {
+      --color: white;
+      --icon-font-size: 1.4rem;
+      --padding-start: 8px;
+      --padding-end: 8px;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        --background: rgba(255, 255, 255, 0.1);
+        transform: translateX(-2px);
+      }
+    }
+    
+    .header-title {
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      
+      .title-icon {
+        font-size: 1.2rem;
+        margin-right: 4px;
+      }
+    }
+  }
+}
+
+// Contenido moderno
+.modern-content {
+  --background: var(--form-bg);
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 15% 85%, rgba(77, 168, 176, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 85% 15%, rgba(0, 178, 122, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(38, 166, 154, 0.02) 0%, transparent 50%),
+      radial-gradient(circle at 30% 30%, rgba(0, 178, 122, 0.03) 0%, transparent 40%),
+      radial-gradient(circle at 70% 70%, rgba(77, 168, 176, 0.03) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+// Container principal
+.container {
+  position: relative;
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+// Círculos decorativos
+.decorative-circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 0;
+  
+  &.top-circle {
+    top: -100px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  &.bottom-circle {
+    bottom: -120px;
+    left: -120px;
+    width: 350px;
+    height: 350px;
+    background: linear-gradient(135deg, var(--tertiary-color), var(--primary-light));
+    animation: float 8s ease-in-out infinite reverse;
+  }
+}
+
+// Elementos flotantes
+.floating-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  
+  .floating-dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    opacity: 0.6;
+    
+    &.dot-1 {
+      top: 20%;
+      left: 10%;
+      background: var(--primary-color);
+      animation: float 4s ease-in-out infinite;
+    }
+    
+    &.dot-2 {
+      top: 60%;
+      right: 15%;
+      background: var(--secondary-color);
+      animation: float 5s ease-in-out infinite 1s;
+    }
+    
+    &.dot-3 {
+      bottom: 30%;
+      left: 20%;
+      background: var(--tertiary-color);
+      animation: float 6s ease-in-out infinite 2s;
+    }
+  }
+}
+
+// Container del formulario
+.form-container {
+  width: 100%;
+  max-width: 400px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  box-shadow: var(--form-shadow);
+  padding: 24px;
+  position: relative;
+  z-index: 2;
+  animation: slideInUp 0.8s ease-out;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent-gradient);
+    border-radius: 20px 20px 0 0;
+  }
+}
+
+// Header del formulario
+.form-header {
+  text-align: center;
+  margin-bottom: 24px;
+  
+  .form-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 12px;
+    background: var(--accent-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 20px rgba(77, 168, 176, 0.25);
+    animation: pulse 2s ease-in-out infinite;
+    
+    .form-icon {
+      font-size: 1.8rem;
+      color: white;
+    }
+  }
+  
+  .form-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--on-surface);
+    margin: 0 0 6px 0;
+    letter-spacing: -0.3px;
+  }
+  
+  .form-subtitle {
+    font-size: 0.9rem;
+    color: var(--on-surface-variant);
+    margin: 0;
+    font-weight: 500;
+  }
+}
+
+// Formulario moderno
+.modern-form {
+  .input-group {
+    margin-bottom: 20px;
+    position: relative;
+    
+    .modern-input {
+      --background: rgba(255, 255, 255, 0.95);
+      --border-radius: 14px;
+      --padding-start: 16px;
+      --padding-end: 16px;
+      --min-height: 56px;
+      border: 2px solid rgba(77, 168, 176, 0.1);
+      backdrop-filter: blur(4px);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, 
+          transparent 0%, 
+          rgba(77, 168, 176, 0.2) 30%,
+          rgba(0, 178, 122, 0.2) 70%,
+          transparent 100%);
+      }
+      
+      &.item-has-focus {
+        --background: rgba(255, 255, 255, 1);
+        border-color: var(--primary-color);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(77, 168, 176, 0.15);
+        
+        .input-icon {
+          color: var(--primary-color);
+          transform: scale(1.1);
+        }
+      }
+      
+      .input-icon {
+        font-size: 1.2rem;
+        color: var(--medium);
+        margin-right: 10px;
+        transition: all 0.3s ease;
+      }
+      
+      ion-label {
+        font-weight: 500;
+        color: var(--on-surface-variant);
+        
+        &.label-floating {
+          color: var(--primary-color);
+          font-weight: 600;
+        }
+      }
+      
+      ion-input {
+        font-weight: 500;
+        color: var(--on-surface);
+        
+        &::placeholder {
+          color: var(--medium);
+          opacity: 0.7;
+        }
+      }
+    }
+    
+    .error-note {
+      margin-top: 8px;
+      padding: 8px 12px;
+      background: rgba(186, 26, 26, 0.05);
+      border-radius: 8px;
+      border-left: 3px solid var(--error);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      animation: shake 0.3s ease-in-out;
+      
+      ion-icon {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+// Botón de envío
+.submit-button {
+  --background: var(--accent-gradient);
+  --color: white;
+  --border-radius: 14px;
+  --padding-top: 14px;
+  --padding-bottom: 14px;
+  --box-shadow: 0 6px 20px rgba(77, 168, 176, 0.25);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  margin-top: 24px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(255, 255, 255, 0.2) 50%, 
+      transparent 100%);
+    transition: left 0.6s ease;
+  }
+  
+  &:not([disabled]):hover {
+    transform: translateY(-3px);
+    --box-shadow: 0 12px 32px rgba(77, 168, 176, 0.4);
+    
+    &::before {
+      left: 100%;
+    }
+  }
+  
+  &[disabled] {
+    --background: var(--medium);
+    --box-shadow: none;
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  ion-icon {
+    font-size: 1.2rem;
+    margin-right: 8px;
+  }
+}
+
+// Container de mensajes
+.message-container {
+  margin-top: 24px;
+  
+  .message-card {
+    padding: 16px 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 500;
+    animation: slideInUp 0.4s ease-out;
+    backdrop-filter: blur(4px);
+    
+    &.error-card {
+      background: rgba(186, 26, 26, 0.1);
+      border: 1px solid rgba(186, 26, 26, 0.2);
+      color: var(--error);
+      
+      ion-icon {
+        font-size: 1.3rem;
+        color: var(--error);
+      }
+    }
+    
+    &.success-card {
+      background: rgba(0, 178, 122, 0.1);
+      border: 1px solid rgba(0, 178, 122, 0.2);
+      color: var(--success);
+      
+      ion-icon {
+        font-size: 1.3rem;
+        color: var(--success);
+      }
+    }
+    
+    p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+  }
+}
+
+// Animaciones
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 8px 24px rgba(77, 168, 176, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 12px 32px rgba(77, 168, 176, 0.4);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+  
+  .form-container {
+    max-width: none;
+    padding: 24px;
+    border-radius: 20px;
+  }
+  
+  .form-header {
+    margin-bottom: 24px;
+    
+    .form-icon-wrapper {
+      width: 70px;
+      height: 70px;
+      
+      .form-icon {
+        font-size: 2rem;
+      }
+    }
+    
+    .form-title {
+      font-size: 1.6rem;
+    }
+  }
+  
+  .modern-form .input-group .modern-input {
+    --min-height: 60px;
+    --padding-start: 16px;
+    --padding-end: 16px;
+  }
+  
+  .decorative-circle {
+    &.top-circle {
+      width: 250px;
+      height: 250px;
+    }
+    
+    &.bottom-circle {
+      width: 280px;
+      height: 280px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .form-container {
+    padding: 20px;
+    border-radius: 16px;
+  }
+  
+  .form-header {
+    .form-icon-wrapper {
+      width: 60px;
+      height: 60px;
+      
+      .form-icon {
+        font-size: 1.8rem;
+      }
+    }
+    
+    .form-title {
+      font-size: 1.4rem;
+    }
+    
+    .form-subtitle {
+      font-size: 0.9rem;
+    }
+  }
+  
+  .modern-form .input-group .modern-input {
+    --min-height: 56px;
+    --padding-start: 14px;
+    --padding-end: 14px;
+    
+    .input-icon {
+      font-size: 1.2rem;
+      margin-right: 10px;
+    }
+  }
+  
+  .submit-button {
+    font-size: 1rem;
+    --padding-top: 14px;
+    --padding-bottom: 14px;
+  }
+}

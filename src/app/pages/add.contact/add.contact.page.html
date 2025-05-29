@@ -1,0 +1,85 @@
+<ion-header class="modern-header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title class="header-title">
+      <ion-icon name="person-add-outline" class="title-icon"></ion-icon>
+      Agregar Contacto
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="modern-content">
+  <div class="container">
+    <div class="decorative-circle top-circle"></div>
+    
+    <div class="form-container">
+      <div class="form-header">
+        <div class="form-icon-wrapper">
+          <ion-icon name="contacts-outline" class="form-icon"></ion-icon>
+        </div>
+        <h2 class="form-title">Nuevo Contacto</h2>
+        <p class="form-subtitle">Ingresa los datos del contacto</p>
+      </div>
+
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="modern-form">
+        <div class="input-group">
+          <ion-item class="modern-input" lines="none">
+            <ion-icon name="person-outline" slot="start" class="input-icon"></ion-icon>
+            <ion-label position="floating">Nombre completo</ion-label>
+            <ion-input formControlName="name" type="text"></ion-input>
+          </ion-item>
+          <ion-note color="danger" class="error-note" *ngIf="errorControl['name'].touched && errorControl['name'].invalid">
+            <ion-icon name="alert-circle-outline"></ion-icon>
+            El nombre es requerido
+          </ion-note>
+        </div>
+
+        <div class="input-group">
+          <ion-item class="modern-input" lines="none">
+            <ion-icon name="call-outline" slot="start" class="input-icon"></ion-icon>
+            <ion-label position="floating">Número de teléfono</ion-label>
+            <ion-input formControlName="phoneNumber" type="tel" maxlength="10"></ion-input>
+          </ion-item>
+          <ion-note color="danger" class="error-note" *ngIf="errorControl['phoneNumber'].touched && errorControl['phoneNumber'].invalid">
+            <ion-icon name="alert-circle-outline"></ion-icon>
+            Número inválido (10 dígitos requeridos)
+          </ion-note>
+        </div>
+
+        <ion-button 
+          expand="block" 
+          type="submit" 
+          [disabled]="contactForm.invalid"
+          class="submit-button">
+          <ion-icon name="search-outline" slot="start"></ion-icon>
+          Buscar y Agregar Contacto
+        </ion-button>
+
+        <div class="message-container">
+          <ion-text color="danger" *ngIf="error" class="error-message">
+            <div class="message-card error-card">
+              <ion-icon name="close-circle-outline"></ion-icon>
+              <p>{{ error }}</p>
+            </div>
+          </ion-text>
+
+          <ion-text color="success" *ngIf="successMessage" class="success-message">
+            <div class="message-card success-card">
+              <ion-icon name="checkmark-circle-outline"></ion-icon>
+              <p>{{ successMessage }}</p>
+            </div>
+          </ion-text>
+        </div>
+      </form>
+    </div>
+
+    <div class="decorative-circle bottom-circle"></div>
+    <div class="floating-elements">
+      <div class="floating-dot dot-1"></div>
+      <div class="floating-dot dot-2"></div>
+      <div class="floating-dot dot-3"></div>
+    </div>
+  </div>
+</ion-content>
